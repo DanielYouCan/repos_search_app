@@ -1,0 +1,23 @@
+<form action="/repos/search" method="get" name="edit" id="searchform">
+  <div class="row mb-3">
+    <label for="searchInput" class="col-sm-2 col-form-label">Your search:</label>
+    <div class="col-sm-10">
+      <input name="value" type="search" class="form-control" id="searchInput" value="<%= params['value']%>" required>
+      <div id="searchHelp" class="form-text">Please enter owner and repository name for “Owner” field like this “ruby ruby”</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="field" class="col-sm-2 col-form-label">Field</label>
+    <div class="col-sm-10">
+      <select name="field" class="form-select" aria-label="size 4 select example" aria-describedby="searchHelp" value="<%= params['field']%>" required>
+        <% if params['field'] %>
+          <option value="<%= params['field'] %>" selected><%= params['field'].capitalize %></option>
+        <% end %>
+        <% %w[name description readme owner].reject { |option| option == params['field'] }.each do |option| %>
+          <option value="<%= option %>"><%= option.capitalize %></option>
+        <% end %>
+      </select>
+      </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+  </form>

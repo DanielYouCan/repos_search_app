@@ -1,0 +1,27 @@
+<div class="w-50 p-3 d-grid gap-3 mt-1 ms-1">
+  <% if defined? errors %>
+    <h4><mark>Some errors occured:</mark></h4>
+    <p class='errors'><%= errors %></p>
+  <% end %>
+
+  <%= erb :form %>
+</div>
+
+<% if defined? @repos %>
+  <div class="container mt-1 ms-1">
+    <div class="row align-items-start">
+      <div class="col-2">
+        <b>Owner name</b>
+      </div>
+      <div class="col-2">
+        <b>Repo name</b>
+      </div>
+      <div class="col-8">
+        <b>Description</b>
+      </div>
+    <% @repos.each do |repo| %>
+      <%= erb :repo, locals: { repo: repo } %>
+    <% end %>
+    </div>
+  </div>
+<% end %>
