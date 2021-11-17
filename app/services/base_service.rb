@@ -8,7 +8,7 @@ module Services
     end
 
     module ClassMethods
-      def self.call(params)
+      def call(params)
         new(params).call
       end
     end

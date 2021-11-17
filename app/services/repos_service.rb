@@ -8,10 +8,6 @@ module Services
     prepend BaseService
     attr_reader :value, :field, :result
 
-    def self.call(params)
-      new(params).call
-    end
-
     def initialize(params)
       @value = params['value']
       @field = params['field']
